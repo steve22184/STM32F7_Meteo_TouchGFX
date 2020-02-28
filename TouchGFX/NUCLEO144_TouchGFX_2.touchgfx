@@ -1,0 +1,1216 @@
+{
+  "Application": {
+    "Screens": [
+      {
+        "Components": [
+          {
+            "RelativeFilename": "beads_bkg.png",
+            "Alpha": 255,
+            "Name": "bkg",
+            "X": -1,
+            "Y": 0,
+            "Width": 481,
+            "Height": 320,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Alpha": 0,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "X": 0,
+                "Y": 0,
+                "Width": 30,
+                "Height": 320,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Red": 0,
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Red": 0,
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Red": 0,
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ],
+            "Name": "btn_main",
+            "X": 450,
+            "Y": 0,
+            "Width": 30,
+            "Height": 320,
+            "Type": "FlexButton",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Components": [
+              {
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Alpha": 127,
+                "Name": "box2",
+                "X": 0,
+                "Y": 0,
+                "Width": 480,
+                "Height": 320,
+                "Type": "Box",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Alpha": 0,
+                "ButtonTrigger": {
+                  "Type": "ClickButtonTrigger"
+                },
+                "ButtonStyles": [
+                  {
+                    "Type": "BoxWithBorderButtonStyle",
+                    "X": 0,
+                    "Y": 0,
+                    "Width": 480,
+                    "Height": 38,
+                    "LockToFlexButtonSize": true,
+                    "BorderSize": 5,
+                    "ColorReleased": {
+                      "Red": 0,
+                      "Green": 102,
+                      "Blue": 153
+                    },
+                    "ColorPressed": {
+                      "Red": 0,
+                      "Green": 153,
+                      "Blue": 204
+                    },
+                    "ColorBorderReleased": {
+                      "Red": 0,
+                      "Green": 51,
+                      "Blue": 102
+                    },
+                    "ColorBorderPressed": {
+                      "Red": 51,
+                      "Green": 102,
+                      "Blue": 153
+                    }
+                  }
+                ],
+                "Name": "btn_clock",
+                "X": 0,
+                "Y": 282,
+                "Width": 480,
+                "Height": 38,
+                "Type": "FlexButton",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "FileNameBackground": "__designer\\Dark_Clocks_Backgrounds_clock_standard_background.png",
+                "RotationCenterX": 116,
+                "RotationCenterY": 116,
+                "Style": "Style1",
+                "UseAnimation": true,
+                "Duration": 30,
+                "Easing": "Bounce",
+                "EasingOption": "Out",
+                "ClockHands": [
+                  {
+                    "Type": "HourClockHand",
+                    "FileNameHandImage": "__designer\\Dark_Clocks_Hands_clock_standard_hour_hand.png",
+                    "RotationCenterX": 7,
+                    "RotationCenterY": 52,
+                    "HourHandMinuteCorrection": false
+                  },
+                  {
+                    "Type": "MinuteClockHand",
+                    "FileNameHandImage": "__designer\\Dark_Clocks_Hands_clock_standard_minute_hand.png",
+                    "RotationCenterX": 7,
+                    "RotationCenterY": 67,
+                    "MinuteHandSecondCorrection": false
+                  },
+                  {
+                    "Type": "SecondClockHand",
+                    "FileNameHandImage": "__designer\\Dark_Clocks_Hands_clock_standard_second_hand.png",
+                    "RotationCenterX": 3,
+                    "RotationCenterY": 66
+                  }
+                ],
+                "UseAmPm": false,
+                "InitialHour": 9,
+                "InitialMinute": 1,
+                "InitialSecond": 5,
+                "Name": "watch",
+                "X": 22,
+                "Y": 39,
+                "Width": 233,
+                "Height": 243,
+                "Type": "AnalogClock",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Components": [
+                  {
+                    "TextId": "SingleUseId1",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 23,
+                      "Green": 23,
+                      "Blue": 23
+                    },
+                    "Alpha": 255,
+                    "AutoSize": false,
+                    "LineSpacing": 0,
+                    "Name": "hour",
+                    "X": 60,
+                    "Y": 17,
+                    "Width": 80,
+                    "Height": 25,
+                    "Type": "TextArea",
+                    "Visible": true,
+                    "Draggable": false,
+                    "Clickable": false,
+                    "Fadeable": false,
+                    "Moveable": false
+                  },
+                  {
+                    "TextId": "SingleUseId2",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 23,
+                      "Green": 23,
+                      "Blue": 23
+                    },
+                    "Alpha": 255,
+                    "AutoSize": false,
+                    "LineSpacing": 0,
+                    "Wildcard1": {
+                      "TextId": "SingleUseId3",
+                      "UseBuffer": true,
+                      "BufferSize": 3
+                    },
+                    "Name": "hour_n",
+                    "X": 60,
+                    "Y": 43,
+                    "Width": 80,
+                    "Height": 45,
+                    "Type": "TextArea",
+                    "Visible": true,
+                    "Draggable": false,
+                    "Clickable": false,
+                    "Fadeable": false,
+                    "Moveable": false
+                  },
+                  {
+                    "TextId": "SingleUseId4",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 23,
+                      "Green": 23,
+                      "Blue": 23
+                    },
+                    "Alpha": 255,
+                    "AutoSize": false,
+                    "LineSpacing": 0,
+                    "Name": "minute",
+                    "X": 60,
+                    "Y": 111,
+                    "Width": 80,
+                    "Height": 25,
+                    "Type": "TextArea",
+                    "Visible": true,
+                    "Draggable": false,
+                    "Clickable": false,
+                    "Fadeable": false,
+                    "Moveable": false
+                  },
+                  {
+                    "TextId": "SingleUseId5",
+                    "TextRotation": "0",
+                    "Color": {
+                      "Red": 23,
+                      "Green": 23,
+                      "Blue": 23
+                    },
+                    "Alpha": 255,
+                    "AutoSize": false,
+                    "LineSpacing": 0,
+                    "Wildcard1": {
+                      "TextId": "SingleUseId6",
+                      "UseBuffer": true,
+                      "BufferSize": 3
+                    },
+                    "Name": "minute_n",
+                    "X": 60,
+                    "Y": 136,
+                    "Width": 80,
+                    "Height": 45,
+                    "Type": "TextArea",
+                    "Visible": true,
+                    "Draggable": false,
+                    "Clickable": false,
+                    "Fadeable": false,
+                    "Moveable": false
+                  },
+                  {
+                    "Alpha": 255,
+                    "ButtonTrigger": {
+                      "Type": "ClickButtonTrigger"
+                    },
+                    "ButtonStyles": [
+                      {
+                        "Type": "TextButtonStyle",
+                        "X": 0,
+                        "Y": 0,
+                        "TextId": "SingleUseId7",
+                        "TextRotation": "0",
+                        "ColorReleased": {
+                          "Red": 23,
+                          "Green": 23,
+                          "Blue": 23
+                        },
+                        "ColorPressed": {
+                          "Red": 255,
+                          "Green": 0,
+                          "Blue": 0
+                        }
+                      }
+                    ],
+                    "Name": "setup",
+                    "X": 60,
+                    "Y": 194,
+                    "Width": 80,
+                    "Height": 25,
+                    "Type": "FlexButton",
+                    "Visible": true,
+                    "Draggable": false,
+                    "Clickable": false,
+                    "Fadeable": false,
+                    "Moveable": false
+                  },
+                  {
+                    "Alpha": 255,
+                    "ButtonTrigger": {
+                      "Type": "ClickButtonTrigger"
+                    },
+                    "ButtonStyles": [
+                      {
+                        "Type": "TextButtonStyle",
+                        "X": 0,
+                        "Y": 0,
+                        "TextId": "SingleUseId8",
+                        "TextRotation": "0",
+                        "ColorReleased": {
+                          "Red": 23,
+                          "Green": 23,
+                          "Blue": 23
+                        },
+                        "ColorPressed": {
+                          "Red": 255,
+                          "Green": 0,
+                          "Blue": 0
+                        }
+                      }
+                    ],
+                    "Name": "hplus",
+                    "X": 21,
+                    "Y": 29,
+                    "Width": 25,
+                    "Height": 25,
+                    "Type": "FlexButton",
+                    "Visible": true,
+                    "Draggable": false,
+                    "Clickable": false,
+                    "Fadeable": false,
+                    "Moveable": false
+                  },
+                  {
+                    "Alpha": 255,
+                    "ButtonTrigger": {
+                      "Type": "ClickButtonTrigger"
+                    },
+                    "ButtonStyles": [
+                      {
+                        "Type": "TextButtonStyle",
+                        "X": 0,
+                        "Y": 0,
+                        "TextId": "SingleUseId9",
+                        "TextRotation": "0",
+                        "ColorReleased": {
+                          "Red": 23,
+                          "Green": 23,
+                          "Blue": 23
+                        },
+                        "ColorPressed": {
+                          "Red": 255,
+                          "Green": 0,
+                          "Blue": 0
+                        }
+                      }
+                    ],
+                    "Name": "hminus",
+                    "X": 21,
+                    "Y": 63,
+                    "Width": 25,
+                    "Height": 25,
+                    "Type": "FlexButton",
+                    "Visible": true,
+                    "Draggable": false,
+                    "Clickable": false,
+                    "Fadeable": false,
+                    "Moveable": false
+                  },
+                  {
+                    "Alpha": 255,
+                    "ButtonTrigger": {
+                      "Type": "ClickButtonTrigger"
+                    },
+                    "ButtonStyles": [
+                      {
+                        "Type": "TextButtonStyle",
+                        "X": 0,
+                        "Y": 0,
+                        "TextId": "SingleUseId10",
+                        "TextRotation": "0",
+                        "ColorReleased": {
+                          "Red": 23,
+                          "Green": 23,
+                          "Blue": 23
+                        },
+                        "ColorPressed": {
+                          "Red": 255,
+                          "Green": 0,
+                          "Blue": 0
+                        }
+                      }
+                    ],
+                    "Name": "mplus",
+                    "X": 21,
+                    "Y": 123,
+                    "Width": 25,
+                    "Height": 25,
+                    "Type": "FlexButton",
+                    "Visible": true,
+                    "Draggable": false,
+                    "Clickable": false,
+                    "Fadeable": false,
+                    "Moveable": false
+                  },
+                  {
+                    "Alpha": 255,
+                    "ButtonTrigger": {
+                      "Type": "ClickButtonTrigger"
+                    },
+                    "ButtonStyles": [
+                      {
+                        "Type": "TextButtonStyle",
+                        "X": 0,
+                        "Y": 0,
+                        "TextId": "SingleUseId11",
+                        "TextRotation": "0",
+                        "ColorReleased": {
+                          "Red": 25,
+                          "Green": 25,
+                          "Blue": 25
+                        },
+                        "ColorPressed": {
+                          "Red": 255,
+                          "Green": 0,
+                          "Blue": 0
+                        }
+                      }
+                    ],
+                    "Name": "mminus",
+                    "X": 21,
+                    "Y": 158,
+                    "Width": 25,
+                    "Height": 25,
+                    "Type": "FlexButton",
+                    "Visible": true,
+                    "Draggable": false,
+                    "Clickable": false,
+                    "Fadeable": false,
+                    "Moveable": false
+                  }
+                ],
+                "IsCacheableContainer": false,
+                "Name": "clock_set",
+                "X": 270,
+                "Y": 45,
+                "Width": 200,
+                "Height": 230,
+                "Type": "Container",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              }
+            ],
+            "IsCacheableContainer": false,
+            "Name": "clock",
+            "X": 0,
+            "Y": -320,
+            "Width": 480,
+            "Height": 320,
+            "Type": "Container",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Components": [
+              {
+                "TextId": "SingleUseId16",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 0,
+                  "Green": 0,
+                  "Blue": 0
+                },
+                "Alpha": 255,
+                "AutoSize": true,
+                "LineSpacing": 0,
+                "Name": "quote_h",
+                "X": 30,
+                "Y": 0,
+                "Width": 140,
+                "Height": 33,
+                "Type": "TextArea",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "TextId": "SingleUseId17",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 0,
+                  "Green": 0,
+                  "Blue": 0
+                },
+                "Alpha": 255,
+                "AutoSize": false,
+                "LineSpacing": 0,
+                "Wildcard1": {
+                  "TextId": "SingleUseId18",
+                  "UseBuffer": true,
+                  "BufferSize": 512
+                },
+                "Name": "quote_txt",
+                "X": 30,
+                "Y": 33,
+                "Width": 140,
+                "Height": 167,
+                "Type": "TextArea",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              }
+            ],
+            "IsCacheableContainer": false,
+            "Name": "quote",
+            "X": 270,
+            "Y": -520,
+            "Width": 200,
+            "Height": 200,
+            "Type": "Container",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Components": [
+              {
+                "UseAnimation": true,
+                "RenderingAlgorithm": "Nearest-neighbor",
+                "FileNameImage": "tgfx_logo_white.png",
+                "LockBitmapToCenter": false,
+                "XBitmapPosition": 50.0,
+                "YBitmapPosition": 100.0,
+                "XAngle": -0.25,
+                "YAngle": -0.25,
+                "ZAngle": -0.25,
+                "Scale": 1.0,
+                "LockOrigoToCenter": true,
+                "XOrigo": 150.0,
+                "YOrigo": 150.0,
+                "ZOrigo": 1000.0,
+                "CameraDistance": 1000.0,
+                "Alpha": 0,
+                "Name": "tgfx",
+                "X": 141,
+                "Y": 10,
+                "Width": 300,
+                "Height": 300,
+                "Type": "TextureMapper",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "IsHorizontalSlider": false,
+                "BackgroundUnselected": "slider_background.png",
+                "BackgroundSelected": "slider_background_filled.png",
+                "Indicator": "slider_knob_circle.png",
+                "BackgroundX": 13,
+                "BackgroundY": 0,
+                "IndicatorPos": 0,
+                "IndicatorMax": 220,
+                "IndicatorMin": 20,
+                "ValueMax": 255,
+                "ValueMin": 0,
+                "InitValue": 0,
+                "Name": "tgfx_slider",
+                "X": 36,
+                "Y": 20,
+                "Width": 35,
+                "Height": 280,
+                "Type": "Slider",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              }
+            ],
+            "IsCacheableContainer": false,
+            "Name": "start",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 320,
+            "Type": "Container",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Components": [
+              {
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Alpha": 127,
+                "Name": "box3",
+                "X": 0,
+                "Y": 0,
+                "Width": 480,
+                "Height": 320,
+                "Type": "Box",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "RelativeFilename": "beige_note_app.png",
+                "Alpha": 255,
+                "Name": "beige_note",
+                "X": 120,
+                "Y": 76,
+                "Width": 240,
+                "Height": 74,
+                "Type": "Image",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "RelativeFilename": "green_note_app.png",
+                "Alpha": 255,
+                "Name": "green_note",
+                "X": 120,
+                "Y": 176,
+                "Width": 240,
+                "Height": 73,
+                "Type": "Image",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "UseAnimation": true,
+                "RenderingAlgorithm": "Nearest-neighbor",
+                "FileNameImage": "temp_app.png",
+                "LockBitmapToCenter": true,
+                "XBitmapPosition": 1.0,
+                "YBitmapPosition": 2.5,
+                "XAngle": 0.0,
+                "YAngle": 0.0,
+                "ZAngle": 0.0,
+                "Scale": 1.0,
+                "LockOrigoToCenter": true,
+                "XOrigo": 15.0,
+                "YOrigo": 35.0,
+                "ZOrigo": 1000.0,
+                "CameraDistance": 1000.0,
+                "Alpha": 255,
+                "Name": "temp",
+                "X": 126,
+                "Y": 80,
+                "Width": 30,
+                "Height": 70,
+                "Type": "TextureMapper",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "UseAnimation": true,
+                "RenderingAlgorithm": "Nearest-neighbor",
+                "FileNameImage": "hum_app.png",
+                "LockBitmapToCenter": true,
+                "XBitmapPosition": 5.0,
+                "YBitmapPosition": 2.5,
+                "XAngle": 0.0,
+                "YAngle": 0.0,
+                "ZAngle": 0.0,
+                "Scale": 1.0,
+                "LockOrigoToCenter": true,
+                "XOrigo": 20.0,
+                "YOrigo": 35.0,
+                "ZOrigo": 1000.0,
+                "CameraDistance": 1000.0,
+                "Alpha": 255,
+                "Name": "hum",
+                "X": 123,
+                "Y": 179,
+                "Width": 40,
+                "Height": 70,
+                "Type": "TextureMapper",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "TextId": "SingleUseId12",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 43,
+                  "Green": 117,
+                  "Blue": 212
+                },
+                "Alpha": 255,
+                "AutoSize": false,
+                "LineSpacing": 0,
+                "Wildcard1": {
+                  "TextId": "SingleUseId13",
+                  "UseBuffer": true,
+                  "BufferSize": 3
+                },
+                "Name": "temp_n",
+                "X": 169,
+                "Y": 95,
+                "Width": 80,
+                "Height": 40,
+                "Type": "TextArea",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "TextId": "SingleUseId14",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 43,
+                  "Green": 117,
+                  "Blue": 212
+                },
+                "Alpha": 255,
+                "AutoSize": false,
+                "LineSpacing": 0,
+                "Wildcard1": {
+                  "TextId": "SingleUseId15",
+                  "UseBuffer": true,
+                  "BufferSize": 5
+                },
+                "Name": "hum_n",
+                "X": 169,
+                "Y": 194,
+                "Width": 80,
+                "Height": 40,
+                "Type": "TextArea",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Color": {
+                  "Red": 219,
+                  "Green": 19,
+                  "Blue": 19
+                },
+                "CenterX": 26,
+                "CenterY": 26,
+                "Radius": 25,
+                "LineWidth": 0,
+                "StartAngle": -95,
+                "EndAngle": 85,
+                "CapPrecision": "Butt",
+                "Alpha": 255,
+                "FileNameBackground": "prg_circle.png",
+                "IndicatorPositionX": 0,
+                "IndicatorPositionY": 0,
+                "IndicatorPositionWidth": 0,
+                "IndicatorPositionHeight": 0,
+                "ProgressRangeMin": 0,
+                "ProgressRangeMax": 100,
+                "ProgressRangeSteps": 100,
+                "ProgressRangeStepsMin": 1,
+                "ProgressInitialValue": 25,
+                "Name": "temp_prg",
+                "X": 263,
+                "Y": 100,
+                "Width": 53,
+                "Height": 27,
+                "Type": "CircleProgress",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              },
+              {
+                "Color": {
+                  "Red": 43,
+                  "Green": 117,
+                  "Blue": 212
+                },
+                "CenterX": 26,
+                "CenterY": 26,
+                "Radius": 25,
+                "LineWidth": 0,
+                "StartAngle": -95,
+                "EndAngle": 85,
+                "CapPrecision": "Butt",
+                "Alpha": 255,
+                "FileNameBackground": "prg_circle.png",
+                "IndicatorPositionX": 0,
+                "IndicatorPositionY": 0,
+                "IndicatorPositionWidth": 0,
+                "IndicatorPositionHeight": 0,
+                "ProgressRangeMin": 0,
+                "ProgressRangeMax": 100,
+                "ProgressRangeSteps": 100,
+                "ProgressRangeStepsMin": 1,
+                "ProgressInitialValue": 20,
+                "Name": "hum_prg",
+                "X": 263,
+                "Y": 199,
+                "Width": 53,
+                "Height": 27,
+                "Type": "CircleProgress",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": false,
+                "Fadeable": false,
+                "Moveable": false
+              }
+            ],
+            "IsCacheableContainer": false,
+            "Name": "climate",
+            "X": 0,
+            "Y": 320,
+            "Width": 480,
+            "Height": 320,
+            "Type": "Container",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "clock_in",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "TriggerComponent": "btn_main",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "X": 0,
+              "Y": 0,
+              "Easing": "Cubic",
+              "EasingOption": "Out",
+              "Duration": 50,
+              "ActionComponent": "clock",
+              "Type": "ActionMove"
+            }
+          },
+          {
+            "InteractionName": "st_slider_Interaction",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerSliderValueChanged"
+            },
+            "Action": {
+              "Code": "st.setAlpha(value);\r\nst.invalidate();",
+              "Type": "ActionExecuteCode"
+            }
+          },
+          {
+            "InteractionName": "tgfx_slider_Interaction",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "tgfx_slider",
+              "Type": "TriggerSliderValueChanged"
+            },
+            "Action": {
+              "Code": "tgfx.setAlpha(value);\r\ntgfx.invalidate();",
+              "Type": "ActionExecuteCode"
+            }
+          },
+          {
+            "InteractionName": "hplus_Interaction",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "hplus",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "FunctionName": "hplusClicked",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "hminus_Interaction",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "hminus",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "FunctionName": "hminusClicked",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "mplus_Interaction",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "mplus",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "FunctionName": "mplusClicked",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "mminus_Interaction",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "mminus",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "FunctionName": "mminusClicked",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "setup_Interaction",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "TriggerComponent": "setup",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "FunctionName": "setupClicked",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "clock_set_moveOut",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "InteractionToTriggerOn": "setup_Interaction",
+              "Type": "TriggerInteractionCompleted"
+            },
+            "Action": {
+              "X": 480,
+              "Y": 45,
+              "Easing": "Linear",
+              "EasingOption": "In",
+              "Duration": 50,
+              "ActionComponent": "clock_set",
+              "Type": "ActionMove"
+            }
+          },
+          {
+            "InteractionName": "quote_in",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "InteractionToTriggerOn": "clock_set_moveOut",
+              "Type": "TriggerInteractionCompleted"
+            },
+            "Action": {
+              "X": 263,
+              "Y": 45,
+              "Easing": "Cubic",
+              "EasingOption": "Out",
+              "Duration": 50,
+              "ActionComponent": "quote",
+              "Type": "ActionMove"
+            }
+          },
+          {
+            "InteractionName": "start_out",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "InteractionToTriggerOn": "clock_in",
+              "Type": "TriggerInteractionCompleted"
+            },
+            "Action": {
+              "X": 0,
+              "Y": 320,
+              "Easing": "Cubic",
+              "EasingOption": "Out",
+              "Duration": 50,
+              "ActionComponent": "start",
+              "Type": "ActionMove"
+            }
+          },
+          {
+            "InteractionName": "clock_out",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "TriggerComponent": "btn_clock",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "X": 0,
+              "Y": -320,
+              "Easing": "Cubic",
+              "EasingOption": "Out",
+              "Duration": 50,
+              "ActionComponent": "clock",
+              "Type": "ActionMove"
+            }
+          },
+          {
+            "InteractionName": "quote_out",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "InteractionToTriggerOn": "clock_out",
+              "Type": "TriggerInteractionCompleted"
+            },
+            "Action": {
+              "X": 0,
+              "Y": -520,
+              "Easing": "Cubic",
+              "EasingOption": "Out",
+              "Duration": 50,
+              "ActionComponent": "quote",
+              "Type": "ActionMove"
+            }
+          },
+          {
+            "InteractionName": "cimate_in",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "InteractionToTriggerOn": "quote_out",
+              "Type": "TriggerInteractionCompleted"
+            },
+            "Action": {
+              "X": 0,
+              "Y": 0,
+              "Easing": "Cubic",
+              "EasingOption": "Out",
+              "Duration": 50,
+              "ActionComponent": "climate",
+              "Type": "ActionMove"
+            }
+          }
+        ],
+        "Name": "main",
+        "OverrideDefaultBufferSize": false,
+        "CanvasBufferSize": 7200
+      }
+    ],
+    "CustomContainerDefinitions": [],
+    "TextEntries": [
+      {
+        "TextEntryId": "SingleUseId1",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId2",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId5",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId6",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId7",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId8",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId9",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId10",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId11",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId12",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId13",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId14",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId15",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId16",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId17",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId18",
+        "IsResource": false
+      }
+    ],
+    "Name": "NUCLEO144_TouchGFX_2",
+    "Resolution": {
+      "Width": 480,
+      "Height": 320
+    },
+    "SelectedColorDepth": 16,
+    "StartupScreenName": "main",
+    "SelectedStartupLanguage": "GB",
+    "Skin": "Dark",
+    "TouchGfxPath": "../Middlewares/ST/touchgfx",
+    "UIPath": ".",
+    "AvailableColorDepths": [
+      16
+    ],
+    "AvailableLCDs": {
+      "16": "LCD16bpp"
+    },
+    "AvailableSections": [
+      "ExtFlashSection",
+      "IntFlashSection"
+    ],
+    "AvailableResolutions": [
+      {
+        "Width": 480,
+        "Height": 320
+      }
+    ],
+    "PhysicalButtons": [],
+    "FrameworkFeatures": {
+      "LCD16bpp": {
+        "Id": "LCD16bpp",
+        "IsEnabled": true
+      }
+    },
+    "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j8",
+    "PostGenerateCommand": "touchgfx update_project --project-file=simulator/msvs/Application.vcxproj",
+    "PostGenerateTargetCommand": "touchgfx update_project --project-file=../NUCLEO144_TouchGFX_2.ioc --platform=m7",
+    "CompileSimulatorCommand": "make -f simulator/gcc/Makefile -j8",
+    "RunSimulatorCommand": "build\\bin\\simulator.exe",
+    "LandscapeSkinX": 0,
+    "LandscapeSkinY": 0,
+    "PortraitSkinX": 0,
+    "PortraitSkinY": 0,
+    "DisplayOrientation": "Landscape"
+  },
+  "Version": "4.13.0"
+}
