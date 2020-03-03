@@ -1,6 +1,6 @@
 
 /*
- * lldrv.c
+ * lldrv.cpp
  *
  *  Created on: 10 фев. 2019 г.
  *      Author: ALScode
@@ -40,15 +40,11 @@ namespace app {
 #define IICx			hi2c2
 #define UARTx			huart2
 
-#define SET_DATASIZE(datasize)					\
-	do {										\
-		if (HSPI.Init.DataSize != datasize){	\
-		HAL_SPI_DeInit(&HSPI);					\
-		uint32_t old = HSPI.Init.DataSize;		\
-		HSPI.Init.DataSize = datasize;			\
-		HSPI.Instance->CR1 &= ~(old);			\
-		HSPI.Instance->CR1 |= datasize;			\
-		HAL_SPI_Init(&HSPI); }					\
+#define SET_DATASIZE(datasize)										\
+	do {															\
+		if (HSPI.Init.DataSize != datasize){						\
+			MODIFY_REG(HSPI.Instance->CR2, SPI_CR2_DS, datasize);	\
+			HSPI.Init.DataSize = datasize; }						\
 		} while (0)
 /*******************************************************************************
 *  Constants and variables
@@ -81,9 +77,8 @@ constexpr uint16_t EEPROM_DRIVER = UINT16_C(0xA0);
 *******************************************************************************/
 void Spi::mode (uint32_t prescaler){
 	if (HSPI.Init.BaudRatePrescaler != prescaler){
-		HAL_SPI_DeInit(&HSPI);
+		MODIFY_REG(HSPI.Instance->CR1, SPI_CR1_BR, prescaler);
 		HSPI.Init.BaudRatePrescaler = prescaler;
-		HAL_SPI_Init(&HSPI);
 	}
 }
 
