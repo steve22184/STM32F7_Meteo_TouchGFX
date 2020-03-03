@@ -23,6 +23,12 @@
     <ClCompile Include="..\..\gui\src\main_screen\mainPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\main_screen\mainView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\main_screen\mainViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\climate_screen_screen\Climate_screenPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\climate_screen_screen\Climate_screenView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\climate_screen_screen\Climate_screenViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\clock_screen_screen\Clock_screenPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\clock_screen_screen\Clock_screenView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\clock_screen_screen\Clock_screenViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xlsx"/>
@@ -173,6 +179,12 @@
     <ClInclude Include="..\..\gui\include\gui\main_screen\mainPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\main_screen\mainView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\main_screen\mainViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\climate_screen_screen\Climate_screenPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\climate_screen_screen\Climate_screenView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\climate_screen_screen\Climate_screenViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\clock_screen_screen\Clock_screenPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\clock_screen_screen\Clock_screenView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\clock_screen_screen\Clock_screenViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

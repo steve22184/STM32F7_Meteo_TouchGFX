@@ -27,43 +27,12 @@ public:
 
     virtual ~mainPresenter() {};
 
-    void saveHour(uint8_t hour)
-    {
-    	model->saveHour(hour);
+    void setSliderValue (int val){
+    	model->setSliderValue (val);
     }
 
-    void saveMinute(uint8_t minute)
-    {
-    	model->saveMinute(minute);
-    }
-
-    void saveSecond(uint8_t second)
-    {
-    	model->saveSecond(second);
-    }
-
-    uint8_t getHour()
-    {
-    	return model->getHour();
-    }
-
-    uint8_t getMinute()
-    {
-    	return model->getMinute();
-    }
-
-    uint8_t getSecond()
-    {
-    	return model->getSecond();
-    }
-
-    uint8_t getSetupFlag()
-    {
-    	return model->getSetupFlag();
-    }
-    void setSetupFlag()
-    {
-    	model->setSetupFlag();
+    int getSliderValue(void){
+    	return model->getSliderValue();
     }
 
 private:

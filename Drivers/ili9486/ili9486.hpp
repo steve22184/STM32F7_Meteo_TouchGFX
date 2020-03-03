@@ -170,7 +170,7 @@ void ILI9486<Communicate>::set_frame (uint16_t x, uint16_t y,
 template<class Communicate>
 void ILI9486<Communicate>::draw_rectangle (uint16_t x, uint16_t y,
 													uint16_t w, uint16_t h, uint16_t color){
-	Communicate::template set_prescaler<>(SPI_BAUDRATEPRESCALER_4);
+	Communicate::template mode<>(SPI_BAUDRATEPRESCALER_4);
 
 	set_frame(x, y, w, h);
 
@@ -243,7 +243,7 @@ void ILI9486<Communicate>::draw_fill_circle (uint16_t x0, uint16_t y0, uint16_t 
 
 template<class Communicate>
 void ILI9486<Communicate>::flush_from_buffer (uint16_t* buf, uint16_t size){
-	Communicate::template set_prescaler(SPI_BAUDRATEPRESCALER_4);
+	Communicate::template mode(SPI_BAUDRATEPRESCALER_4);
 	WriteData wr;
 	Communicate::template send16b<>(buf, size);
 }
@@ -329,14 +329,14 @@ void ILI9486<Communicate>::hard_reset (void){
 
 template<class Communicate>
 void ILI9486<Communicate>::write_command (uint8_t reg){
-	Communicate::template set_prescaler<>(SPI_BAUDRATEPRESCALER_4);
+	Communicate::template mode<>(SPI_BAUDRATEPRESCALER_4);
 	WriteReg wr;
 	Communicate::template send8b<>(reg);
 }
 
 template<class Communicate>
 void ILI9486<Communicate>::write_data (uint8_t data){
-	Communicate::template set_prescaler<>(SPI_BAUDRATEPRESCALER_4);
+	Communicate::template mode<>(SPI_BAUDRATEPRESCALER_4);
 	WriteData wd;
 	Communicate::template send8b<>(data);
 }

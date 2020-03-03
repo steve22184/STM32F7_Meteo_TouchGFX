@@ -52,17 +52,36 @@ extern volatile unsigned long ulHighFrequencyTimerTicks;
 /* USER CODE END Variables */
 osThreadId defaultTaskHandle;
 osThreadId MonitorTaskHandle;
+osThreadId InitTaskHandle;
+osThreadId TemperatureTaskHandle;
+osThreadId HumidityTaskHandle;
 osTimerId statTimerHandle;
+osTimerId temperatureTimerHandle;
+osTimerId humidityTimerHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
 void print_itm (const char* str);
 char CurrentStateConvert (eTaskState state_);
+
+void ir_init(void);
+
+void ds_config(void);
+uint32_t ds_request_temp(void);
+uint16_t* ds_read_temp(void);
+
+void dht11_start(void);
+
 /* USER CODE END FunctionPrototypes */
 
 void StartDefaultTask(void const * argument);
 void StartMonitorTask(void const * argument);
+void StartInitTask(void const * argument);
+void StartTemperatureTask(void const * argument);
+void StartHumidityTask(void const * argument);
 void statTimerCallback(void const * argument);
+void temperatureTimerCallback(void const * argument);
+void humidityTimerCallback(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -181,9 +200,19 @@ void MX_FREERTOS_Init(void) {
   osTimerDef(statTimer, statTimerCallback);
   statTimerHandle = osTimerCreate(osTimer(statTimer), osTimerPeriodic, NULL);
 
+  /* definition and creation of temperatureTimer */
+  osTimerDef(temperatureTimer, temperatureTimerCallback);
+  temperatureTimerHandle = osTimerCreate(osTimer(temperatureTimer), osTimerPeriodic, NULL);
+
+  /* definition and creation of humidityTimer */
+  osTimerDef(humidityTimer, humidityTimerCallback);
+  humidityTimerHandle = osTimerCreate(osTimer(humidityTimer), osTimerPeriodic, NULL);
+
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
   osTimerStart (statTimerHandle, 2000);
+  osTimerStart (temperatureTimerHandle, 500);
+  osTimerStart (humidityTimerHandle, 1000);
   /* USER CODE END RTOS_TIMERS */
 
   /* USER CODE BEGIN RTOS_QUEUES */
@@ -198,6 +227,18 @@ void MX_FREERTOS_Init(void) {
   /* definition and creation of MonitorTask */
   osThreadDef(MonitorTask, StartMonitorTask, osPriorityNormal, 0, 256);
   MonitorTaskHandle = osThreadCreate(osThread(MonitorTask), NULL);
+
+  /* definition and creation of InitTask */
+  osThreadDef(InitTask, StartInitTask, osPriorityAboveNormal, 0, 128);
+  InitTaskHandle = osThreadCreate(osThread(InitTask), NULL);
+
+  /* definition and creation of TemperatureTask */
+  osThreadDef(TemperatureTask, StartTemperatureTask, osPriorityNormal, 0, 128);
+  TemperatureTaskHandle = osThreadCreate(osThread(TemperatureTask), NULL);
+
+  /* definition and creation of HumidityTask */
+  osThreadDef(HumidityTask, StartHumidityTask, osPriorityNormal, 0, 128);
+  HumidityTaskHandle = osThreadCreate(osThread(HumidityTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -287,6 +328,71 @@ void StartMonitorTask(void const * argument)
   /* USER CODE END StartMonitorTask */
 }
 
+/* USER CODE BEGIN Header_StartInitTask */
+/**
+* @brief Function implementing the InitTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartInitTask */
+void StartInitTask(void const * argument)
+{
+  /* USER CODE BEGIN StartInitTask */
+  /* Infinite loop */
+  for(;;)
+  {
+	  ir_init();
+	  ds_config();
+
+	  vTaskDelete(NULL);
+  }
+  /* USER CODE END StartInitTask */
+}
+
+/* USER CODE BEGIN Header_StartTemperatureTask */
+/**
+* @brief Function implementing the TemperatureTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartTemperatureTask */
+void StartTemperatureTask(void const * argument)
+{
+  /* USER CODE BEGIN StartTemperatureTask */
+	uint32_t convertion_time = 750;
+  /* Infinite loop */
+  for(;;)
+  {
+	ulTaskNotifyTake( pdTRUE,  portMAX_DELAY );
+
+	convertion_time =  ds_request_temp();
+	osDelay(convertion_time);
+	ds_read_temp();
+  }
+  /* USER CODE END StartTemperatureTask */
+}
+
+/* USER CODE BEGIN Header_StartHumidityTask */
+/**
+* @brief Function implementing the HumidityTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartHumidityTask */
+void StartHumidityTask(void const * argument)
+{
+  /* USER CODE BEGIN StartHumidityTask */
+  /* Infinite loop */
+  for(;;)
+  {
+	ulTaskNotifyTake( pdTRUE,  portMAX_DELAY );
+
+	dht11_start();
+//    osDelay(1);
+  }
+  /* USER CODE END StartHumidityTask */
+}
+
 /* statTimerCallback function */
 void statTimerCallback(void const * argument)
 {
@@ -294,6 +400,24 @@ void statTimerCallback(void const * argument)
 	UNUSED(argument);
 	xTaskNotifyGive( MonitorTaskHandle );
   /* USER CODE END statTimerCallback */
+}
+
+/* temperatureTimerCallback function */
+void temperatureTimerCallback(void const * argument)
+{
+  /* USER CODE BEGIN temperatureTimerCallback */
+	UNUSED(argument);
+	xTaskNotifyGive( TemperatureTaskHandle );
+  /* USER CODE END temperatureTimerCallback */
+}
+
+/* humidityTimerCallback function */
+void humidityTimerCallback(void const * argument)
+{
+  /* USER CODE BEGIN humidityTimerCallback */
+	UNUSED(argument);
+	xTaskNotifyGive( HumidityTaskHandle );
+  /* USER CODE END humidityTimerCallback */
 }
 
 /* Private application code --------------------------------------------------*/

@@ -18,6 +18,14 @@ public:
     // main
     void gotomainScreenNoTransition();
 
+    void gotomainScreenSlideTransitionNorth();
+
+    // Clock_screen
+    void gotoClock_screenScreenSlideTransitionNorth();
+
+    // Climate_screen
+    void gotoClimate_screenScreenSlideTransitionNorth();
+
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
     FrontendHeap& frontendHeap;
@@ -25,6 +33,14 @@ protected:
 
     // main
     void gotomainScreenNoTransitionImpl();
+
+    void gotomainScreenSlideTransitionNorthImpl();
+
+    // Clock_screen
+    void gotoClock_screenScreenSlideTransitionNorthImpl();
+
+    // Climate_screen
+    void gotoClimate_screenScreenSlideTransitionNorthImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP

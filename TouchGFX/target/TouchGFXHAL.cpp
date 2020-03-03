@@ -61,6 +61,7 @@ void TouchGFXHAL::initialize()
     TouchGFXGeneratedHAL::lockDMAToFrontPorch(false);
 
     TouchGFXGeneratedHAL::setButtonController(&btnCtrl);
+//    HAL::getButtonController()->init();
     HAL::setTouchSampleRate(30);
 
 //    app::ST7735<app::Spi>::init();

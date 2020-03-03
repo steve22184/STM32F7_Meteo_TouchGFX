@@ -172,6 +172,30 @@
     <Filter Include="Source Files\generated\gui_generated\main_screen">
       <UniqueIdentifier>2EC7D8D0-C668-B7B0-418A-221EE3A8F121</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\gui\clock_screen_screen">
+      <UniqueIdentifier>3393BEDC-DD77-6CA3-F3C7-E162263D80CE</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\clock_screen_screen">
+      <UniqueIdentifier>3003E004-65B0-C46D-331C-E152E78CB090</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\climate_screen_screen">
+      <UniqueIdentifier>1FAAE077-EA8E-8CC1-9631-F53CAF1BB091</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\climate_screen_screen">
+      <UniqueIdentifier>FD8D43B7-0551-39DD-2B5F-B1016E2FF2BF</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\climate_screen_screen">
+      <UniqueIdentifier>007AEC27-AC83-76E6-A3C1-01EC7593FBA2</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\clock_screen_screen">
+      <UniqueIdentifier>F9168C21-0C87-0307-DEF9-DE164C021E0C</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\clock_screen_screen">
+      <UniqueIdentifier>38E82F73-265A-E062-01B2-5FF8D3156992</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\climate_screen_screen">
+      <UniqueIdentifier>423386D5-FE13-D669-60C4-06EF3C2C4F76</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\driver\touch\SDL2TouchController.cpp">
@@ -209,6 +233,24 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\main_screen\mainViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\main_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\climate_screen_screen\Climate_screenPresenter.cpp">
+      <Filter>Source Files\gui\climate_screen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\climate_screen_screen\Climate_screenView.cpp">
+      <Filter>Source Files\gui\climate_screen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\climate_screen_screen\Climate_screenViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\climate_screen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\clock_screen_screen\Clock_screenPresenter.cpp">
+      <Filter>Source Files\gui\clock_screen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\clock_screen_screen\Clock_screenView.cpp">
+      <Filter>Source Files\gui\clock_screen_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\clock_screen_screen\Clock_screenViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\clock_screen_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -651,6 +693,24 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\main_screen\mainViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\main_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\climate_screen_screen\Climate_screenPresenter.hpp">
+      <Filter>Header Files\gui\climate_screen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\climate_screen_screen\Climate_screenView.hpp">
+      <Filter>Header Files\gui\climate_screen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\climate_screen_screen\Climate_screenViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\climate_screen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\clock_screen_screen\Clock_screenPresenter.hpp">
+      <Filter>Header Files\gui\clock_screen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\clock_screen_screen\Clock_screenView.hpp">
+      <Filter>Header Files\gui\clock_screen_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\clock_screen_screen\Clock_screenViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\clock_screen_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -33,12 +33,14 @@
 
 #include <touchgfx/HAL/Buttons.hpp>
 #include "main.h"
+#include "ir.hpp"
 
 /*******************************************************************************
 *  Defines
 *******************************************************************************/
 
 using namespace touchgfx;
+using namespace app;
 
 /*******************************************************************************
 *  Constants and variables
@@ -61,30 +63,19 @@ void KeySampler::init(){
 bool KeySampler::sample(uint8_t& key){
 //   unsigned int buttons = ...; //sample GPIO
    bool result = false;
-   static uint8_t state, count;
+   static uint8_t count;
+   uint8_t cmd = 0xFF;
+
    //Return true if button 1 was pressed, save 1 to key argument
    //Return true if button 2 was pressed, save 2 to key argument
    if ( (HAL_GPIO_ReadPin(Button_GPIO_Port, Button_Pin) == GPIO_PIN_SET) && (count++ > 7)){
 	   count = 0;
 	   result = true;
+	   key = 0x80;
 
-	   switch (state){
-	   case 0:
-		   key = 0;
-		   break;
-	   case 1:
-		   key = 1;
-		   break;
-	   case 2:
-		   key = 2;
-		   break;
-	   default:
-		   break;
-	   }
-
-	   if (++state == 3){
-		   state = 0;
-	   }
+   } else if ( (cmd = ir_get().command()) != 0xFF){
+	   result = true;
+	   key = cmd;
    }
    return result;
 }

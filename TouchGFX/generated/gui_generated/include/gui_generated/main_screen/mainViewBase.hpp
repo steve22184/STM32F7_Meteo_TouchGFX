@@ -8,18 +8,9 @@
 #include <mvp/View.hpp>
 #include <gui/main_screen/mainPresenter.hpp>
 #include <touchgfx/widgets/Image.hpp>
-#include <touchgfx/containers/buttons/Buttons.hpp>
 #include <touchgfx/containers/Container.hpp>
-#include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/containers/clock/AnalogClock.hpp>
-#include <touchgfx/widgets/TextArea.hpp>
-#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/AnimationTextureMapper.hpp>
 #include <touchgfx/containers/Slider.hpp>
-#include <touchgfx/containers/progress_indicators/CircleProgress.hpp>
-#include <touchgfx/widgets/canvas/PainterRGB565.hpp>
-#include <touchgfx/EasingEquations.hpp>
-#include <touchgfx/mixins/MoveAnimator.hpp>
 
 class mainViewBase : public touchgfx::View<mainPresenter>
 {
@@ -27,34 +18,7 @@ public:
     mainViewBase();
     virtual ~mainViewBase() {}
     virtual void setupScreen();
-
-    /*
-     * Virtual Action Handlers
-     */
-    virtual void hplusClicked()
-    {
-        // Override and implement this function in main
-    }
-
-    virtual void hminusClicked()
-    {
-        // Override and implement this function in main
-    }
-
-    virtual void mplusClicked()
-    {
-        // Override and implement this function in main
-    }
-
-    virtual void mminusClicked()
-    {
-        // Override and implement this function in main
-    }
-
-    virtual void setupClicked()
-    {
-        // Override and implement this function in main
-    }
+    virtual void handleKeyEvent(uint8_t key);
 
 protected:
     FrontendApplication& application() {
@@ -65,89 +29,22 @@ protected:
      * Member Declarations
      */
     touchgfx::Image bkg;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_main;
-    touchgfx::MoveAnimator< touchgfx::Container > clock;
-    touchgfx::Box box2;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger > btn_clock;
-    touchgfx::AnalogClock watch;
-    touchgfx::MoveAnimator< touchgfx::Container > clock_set;
-    touchgfx::TextArea hour;
-    touchgfx::TextAreaWithOneWildcard hour_n;
-    touchgfx::TextArea minute;
-    touchgfx::TextAreaWithOneWildcard minute_n;
-    touchgfx::TextButtonStyle< touchgfx::ClickButtonTrigger > setup;
-    touchgfx::TextButtonStyle< touchgfx::ClickButtonTrigger > hplus;
-    touchgfx::TextButtonStyle< touchgfx::ClickButtonTrigger > hminus;
-    touchgfx::TextButtonStyle< touchgfx::ClickButtonTrigger > mplus;
-    touchgfx::TextButtonStyle< touchgfx::ClickButtonTrigger > mminus;
-    touchgfx::MoveAnimator< touchgfx::Container > quote;
-    touchgfx::TextArea quote_h;
-    touchgfx::TextAreaWithOneWildcard quote_txt;
-    touchgfx::MoveAnimator< touchgfx::Container > start;
+    touchgfx::Container start;
     touchgfx::AnimationTextureMapper tgfx;
     touchgfx::Slider tgfx_slider;
-    touchgfx::MoveAnimator< touchgfx::Container > climate;
-    touchgfx::Box box3;
-    touchgfx::Image beige_note;
-    touchgfx::Image green_note;
-    touchgfx::AnimationTextureMapper temp;
-    touchgfx::AnimationTextureMapper hum;
-    touchgfx::TextAreaWithOneWildcard temp_n;
-    touchgfx::TextAreaWithOneWildcard hum_n;
-    touchgfx::CircleProgress temp_prg;
-    touchgfx::PainterRGB565 temp_prgPainter;
-    touchgfx::CircleProgress hum_prg;
-    touchgfx::PainterRGB565 hum_prgPainter;
-
-    /*
-     * Wildcard Buffers
-     */
-    static const uint16_t HOUR_N_SIZE = 3;
-    touchgfx::Unicode::UnicodeChar hour_nBuffer[HOUR_N_SIZE];
-    static const uint16_t MINUTE_N_SIZE = 3;
-    touchgfx::Unicode::UnicodeChar minute_nBuffer[MINUTE_N_SIZE];
-    static const uint16_t QUOTE_TXT_SIZE = 512;
-    touchgfx::Unicode::UnicodeChar quote_txtBuffer[QUOTE_TXT_SIZE];
-    static const uint16_t TEMP_N_SIZE = 3;
-    touchgfx::Unicode::UnicodeChar temp_nBuffer[TEMP_N_SIZE];
-    static const uint16_t HUM_N_SIZE = 5;
-    touchgfx::Unicode::UnicodeChar hum_nBuffer[HUM_N_SIZE];
 
 private:
 
     /*
      * Callback Declarations
      */
-    touchgfx::Callback<mainViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
     touchgfx::Callback<mainViewBase, const touchgfx::Slider&, int> sliderValueChangedCallback;
 
     /*
      * Callback Handler Declarations
      */
-    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
     void sliderValueChangedCallbackHandler(const touchgfx::Slider& src, int value);
-    /*
-     * Interaction Callback Declarations
-     */
-    touchgfx::Callback < mainViewBase, const touchgfx::MoveAnimator<touchgfx::Container>& > clock_inEndedCallback;
-    touchgfx::Callback < mainViewBase, const touchgfx::MoveAnimator<touchgfx::Container>& > clock_set_moveOutEndedCallback;
-    touchgfx::Callback < mainViewBase, const touchgfx::MoveAnimator<touchgfx::Container>& > clock_outEndedCallback;
-    touchgfx::Callback < mainViewBase, const touchgfx::MoveAnimator<touchgfx::Container>& > quote_outEndedCallback;
 
-
-    /*
-     * Interaction Handlers
-     */
-    void clock_inEndedCallbackHandler(const touchgfx::MoveAnimator<touchgfx::Container>& comp);
-    void clock_set_moveOutEndedCallbackHandler(const touchgfx::MoveAnimator<touchgfx::Container>& comp);
-    void clock_outEndedCallbackHandler(const touchgfx::MoveAnimator<touchgfx::Container>& comp);
-    void quote_outEndedCallbackHandler(const touchgfx::MoveAnimator<touchgfx::Container>& comp);
-
-    /*
-     * Canvas Buffer Size
-     */
-    static const uint16_t CANVAS_BUFFER_SIZE = 7200;
-    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 };
 
 #endif // MAINVIEWBASE_HPP

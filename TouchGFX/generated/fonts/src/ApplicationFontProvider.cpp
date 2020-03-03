@@ -22,10 +22,10 @@ touchgfx::Font* ApplicationFontProvider::getFont(touchgfx::FontId typography)
         // segoesc_30_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[3]);
     case Typography::TYPOGRAPHY_QH:
-        // ITCBLKAD_TTF_25_4bpp
+        // SCHLBKI_TTF_24_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[4]);
     case Typography::TYPOGRAPHY_Q:
-        // ITCBLKAD_TTF_16_4bpp
+        // SCHLBKI_TTF_16_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[5]);
     default:
         return 0;

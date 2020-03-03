@@ -56,21 +56,6 @@ namespace app {
 /*******************************************************************************
 *  Struct / Classes
 *******************************************************************************/
-
-//class Communicate{
-//public:
-//	Communicate(const Communicate&) = delete;
-//	const Communicate& operator= (const Communicate&) = delete;
-//
-//	void send8b (uint8_t value);
-//	void send8b (uint8_t* data, uint16_t size);
-//	void send16b (uint16_t value);
-//	void send16b (uint16_t* data, uint16_t size);
-//
-//	void recieve8b (uint8_t* data, uint16_t size);
-//	void receive16b (uint16_t* data, uint16_t size);
-//};
-
 template <class Bus>
 class Communicate{
 public:
@@ -80,9 +65,9 @@ public:
 	const Communicate& operator= (const Communicate&) = delete;
 
 	template<class Periph = Bus, typename ...params>
-		static void set_prescaler (params... parameters){
-			Periph::set_prescaler(parameters...);
-		}
+	static void mode (params... parameters){
+		Periph:: mode(parameters...);
+	}
 
 	template<class Periph = Bus, typename ...params>
 	static void send8b (params... parameters){
@@ -100,12 +85,17 @@ public:
 	static void receive16b (params... parameters){
 		Periph::receive16b(parameters...);
 	}
+
+	template<class Periph = Bus, typename ...params>
+	static void send_receive8b (params... parameters){
+		Periph::send_receive8b(parameters...);
+	}
 };
 /*----------------------------------------------------------------------------*/
 
 class Spi {
 public:
-	static void set_prescaler (uint32_t prescaler);
+	static void mode (uint32_t prescaler);
 	static void send8b (uint8_t value);
 	static void send8b (uint8_t* data, uint16_t size);
 	static void send16b (uint16_t value);
@@ -117,13 +107,21 @@ public:
 /*----------------------------------------------------------------------------*/
 class IIC {
 public:
-	static void send8b (uint8_t* data, uint16_t size);
-	static void receive8b (uint8_t* data, uint16_t size);
+	static void send8b (uint8_t* data, uint16_t size, uint16_t address);
+	static void receive8b (uint8_t* data, uint16_t size, uint16_t address);
+};
+
+/*----------------------------------------------------------------------------*/
+
+class Uart {
+public:
+	static void mode (uint32_t baud);
+	static void send_receive8b (uint8_t* tdata, uint8_t* rdata, uint16_t size);
 };
 /*----------------------------------------------------------------------------*/
 typedef Communicate<Spi> spi;
 typedef Communicate<IIC> iic;
-
+typedef Communicate<Uart> uart;
 /*----------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------*/
 

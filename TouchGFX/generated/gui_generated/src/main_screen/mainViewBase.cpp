@@ -3,137 +3,13 @@
 /*********************************************************************************/
 #include <gui_generated/main_screen/mainViewBase.hpp>
 #include "BitmapDatabase.hpp"
-#include <touchgfx/Color.hpp>
-#include <texts/TextKeysAndLanguages.hpp>
 
 mainViewBase::mainViewBase() :
-    flexButtonCallback(this, &mainViewBase::flexButtonCallbackHandler),
-    sliderValueChangedCallback(this, &mainViewBase::sliderValueChangedCallbackHandler),
-    clock_inEndedCallback(this, &mainViewBase::clock_inEndedCallbackHandler),
-    clock_set_moveOutEndedCallback(this, &mainViewBase::clock_set_moveOutEndedCallbackHandler),
-    clock_outEndedCallback(this, &mainViewBase::clock_outEndedCallbackHandler),
-    quote_outEndedCallback(this, &mainViewBase::quote_outEndedCallbackHandler)
+    sliderValueChangedCallback(this, &mainViewBase::sliderValueChangedCallbackHandler)
 {
-
-    touchgfx::CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
 
     bkg.setXY(-1, 0);
     bkg.setBitmap(touchgfx::Bitmap(BITMAP_BEADS_BKG_ID));
-
-    btn_main.setBoxWithBorderPosition(0, 0, 30, 320);
-    btn_main.setBorderSize(5);
-    btn_main.setBoxWithBorderColors(touchgfx::Color::getColorFrom24BitRGB(0, 102, 153), touchgfx::Color::getColorFrom24BitRGB(0, 153, 204), touchgfx::Color::getColorFrom24BitRGB(0, 51, 102), touchgfx::Color::getColorFrom24BitRGB(51, 102, 153));
-    btn_main.setPosition(450, 0, 30, 320);
-    btn_main.setAlpha(0);
-    btn_main.setAction(flexButtonCallback);
-
-    clock.setPosition(0, -320, 480, 320);
-
-    box2.setPosition(0, 0, 480, 320);
-    box2.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    box2.setAlpha(127);
-    clock.add(box2);
-
-    btn_clock.setBoxWithBorderPosition(0, 0, 480, 38);
-    btn_clock.setBorderSize(5);
-    btn_clock.setBoxWithBorderColors(touchgfx::Color::getColorFrom24BitRGB(0, 102, 153), touchgfx::Color::getColorFrom24BitRGB(0, 153, 204), touchgfx::Color::getColorFrom24BitRGB(0, 51, 102), touchgfx::Color::getColorFrom24BitRGB(51, 102, 153));
-    btn_clock.setPosition(0, 282, 480, 38);
-    btn_clock.setAlpha(0);
-    btn_clock.setAction(flexButtonCallback);
-    clock.add(btn_clock);
-
-    watch.setXY(22, 39);
-    watch.setBackground(BITMAP_DARK_CLOCKS_BACKGROUNDS_CLOCK_STANDARD_BACKGROUND_ID, 116, 116);
-    watch.setupSecondHand(BITMAP_DARK_CLOCKS_HANDS_CLOCK_STANDARD_SECOND_HAND_ID, 3, 66);
-    watch.setupMinuteHand(BITMAP_DARK_CLOCKS_HANDS_CLOCK_STANDARD_MINUTE_HAND_ID, 7, 67);
-    watch.setMinuteHandSecondCorrection(false);
-    watch.setupHourHand(BITMAP_DARK_CLOCKS_HANDS_CLOCK_STANDARD_HOUR_HAND_ID, 7, 52);
-    watch.setHourHandMinuteCorrection(false);
-    watch.initializeTime24Hour(9, 1, 5);
-    watch.setAnimation(30, touchgfx::EasingEquations::bounceEaseOut);
-    clock.add(watch);
-
-    clock_set.setPosition(270, 45, 200, 230);
-
-    hour.setPosition(60, 17, 80, 25);
-    hour.setColor(touchgfx::Color::getColorFrom24BitRGB(23, 23, 23));
-    hour.setLinespacing(0);
-    hour.setTypedText(touchgfx::TypedText(T_SINGLEUSEID1));
-    clock_set.add(hour);
-
-    hour_n.setPosition(60, 43, 80, 45);
-    hour_n.setColor(touchgfx::Color::getColorFrom24BitRGB(23, 23, 23));
-    hour_n.setLinespacing(0);
-    Unicode::snprintf(hour_nBuffer, HOUR_N_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID3).getText());
-    hour_n.setWildcard(hour_nBuffer);
-    hour_n.setTypedText(touchgfx::TypedText(T_SINGLEUSEID2));
-    clock_set.add(hour_n);
-
-    minute.setPosition(60, 111, 80, 25);
-    minute.setColor(touchgfx::Color::getColorFrom24BitRGB(23, 23, 23));
-    minute.setLinespacing(0);
-    minute.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4));
-    clock_set.add(minute);
-
-    minute_n.setPosition(60, 136, 80, 45);
-    minute_n.setColor(touchgfx::Color::getColorFrom24BitRGB(23, 23, 23));
-    minute_n.setLinespacing(0);
-    Unicode::snprintf(minute_nBuffer, MINUTE_N_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID6).getText());
-    minute_n.setWildcard(minute_nBuffer);
-    minute_n.setTypedText(touchgfx::TypedText(T_SINGLEUSEID5));
-    clock_set.add(minute_n);
-
-    setup.setText(TypedText(T_SINGLEUSEID7));
-    setup.setTextPosition(0, 0, 80, 25);
-    setup.setTextColors(touchgfx::Color::getColorFrom24BitRGB(23, 23, 23), touchgfx::Color::getColorFrom24BitRGB(255, 0, 0));
-    setup.setPosition(60, 194, 80, 25);
-    setup.setAction(flexButtonCallback);
-    clock_set.add(setup);
-
-    hplus.setText(TypedText(T_SINGLEUSEID8));
-    hplus.setTextPosition(0, 0, 25, 25);
-    hplus.setTextColors(touchgfx::Color::getColorFrom24BitRGB(23, 23, 23), touchgfx::Color::getColorFrom24BitRGB(255, 0, 0));
-    hplus.setPosition(21, 29, 25, 25);
-    hplus.setAction(flexButtonCallback);
-    clock_set.add(hplus);
-
-    hminus.setText(TypedText(T_SINGLEUSEID9));
-    hminus.setTextPosition(0, 0, 25, 25);
-    hminus.setTextColors(touchgfx::Color::getColorFrom24BitRGB(23, 23, 23), touchgfx::Color::getColorFrom24BitRGB(255, 0, 0));
-    hminus.setPosition(21, 63, 25, 25);
-    hminus.setAction(flexButtonCallback);
-    clock_set.add(hminus);
-
-    mplus.setText(TypedText(T_SINGLEUSEID10));
-    mplus.setTextPosition(0, 0, 25, 25);
-    mplus.setTextColors(touchgfx::Color::getColorFrom24BitRGB(23, 23, 23), touchgfx::Color::getColorFrom24BitRGB(255, 0, 0));
-    mplus.setPosition(21, 123, 25, 25);
-    mplus.setAction(flexButtonCallback);
-    clock_set.add(mplus);
-
-    mminus.setText(TypedText(T_SINGLEUSEID11));
-    mminus.setTextPosition(0, 0, 25, 25);
-    mminus.setTextColors(touchgfx::Color::getColorFrom24BitRGB(25, 25, 25), touchgfx::Color::getColorFrom24BitRGB(255, 0, 0));
-    mminus.setPosition(21, 158, 25, 25);
-    mminus.setAction(flexButtonCallback);
-    clock_set.add(mminus);
-    clock.add(clock_set);
-
-    quote.setPosition(270, -520, 200, 200);
-
-    quote_h.setXY(30, 0);
-    quote_h.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-    quote_h.setLinespacing(0);
-    quote_h.setTypedText(touchgfx::TypedText(T_SINGLEUSEID16));
-    quote.add(quote_h);
-
-    quote_txt.setPosition(30, 33, 140, 167);
-    quote_txt.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-    quote_txt.setLinespacing(0);
-    Unicode::snprintf(quote_txtBuffer, QUOTE_TXT_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID18).getText());
-    quote_txt.setWildcard(quote_txtBuffer);
-    quote_txt.setTypedText(touchgfx::TypedText(T_SINGLEUSEID17));
-    quote.add(quote_txt);
 
     start.setPosition(0, 0, 480, 320);
 
@@ -159,95 +35,8 @@ mainViewBase::mainViewBase() :
     tgfx_slider.setNewValueCallback(sliderValueChangedCallback);
     start.add(tgfx_slider);
 
-    climate.setPosition(0, 320, 480, 320);
-
-    box3.setPosition(0, 0, 480, 320);
-    box3.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    box3.setAlpha(127);
-    climate.add(box3);
-
-    beige_note.setXY(120, 76);
-    beige_note.setBitmap(touchgfx::Bitmap(BITMAP_BEIGE_NOTE_APP_ID));
-    climate.add(beige_note);
-
-    green_note.setXY(120, 176);
-    green_note.setBitmap(touchgfx::Bitmap(BITMAP_GREEN_NOTE_APP_ID));
-    climate.add(green_note);
-
-    temp.setXY(126, 80);
-    temp.setBitmap(touchgfx::Bitmap(BITMAP_TEMP_APP_ID));
-    temp.setWidth(30);
-    temp.setHeight(70);
-    temp.setBitmapPosition(1.000f, 2.500f);
-    temp.setScale(1.000f);
-    temp.setCameraDistance(1000.000f);
-    temp.setOrigo(15.000f, 35.000f, 1000.000f);
-    temp.setCamera(15.000f, 35.000f);
-    temp.updateAngles(0.000f, 0.000f, 0.000f);
-    temp.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
-    climate.add(temp);
-
-    hum.setXY(123, 179);
-    hum.setBitmap(touchgfx::Bitmap(BITMAP_HUM_APP_ID));
-    hum.setWidth(40);
-    hum.setHeight(70);
-    hum.setBitmapPosition(5.000f, 2.500f);
-    hum.setScale(1.000f);
-    hum.setCameraDistance(1000.000f);
-    hum.setOrigo(20.000f, 35.000f, 1000.000f);
-    hum.setCamera(20.000f, 35.000f);
-    hum.updateAngles(0.000f, 0.000f, 0.000f);
-    hum.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
-    climate.add(hum);
-
-    temp_n.setPosition(169, 95, 80, 40);
-    temp_n.setColor(touchgfx::Color::getColorFrom24BitRGB(43, 117, 212));
-    temp_n.setLinespacing(0);
-    Unicode::snprintf(temp_nBuffer, TEMP_N_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID13).getText());
-    temp_n.setWildcard(temp_nBuffer);
-    temp_n.setTypedText(touchgfx::TypedText(T_SINGLEUSEID12));
-    climate.add(temp_n);
-
-    hum_n.setPosition(169, 194, 80, 40);
-    hum_n.setColor(touchgfx::Color::getColorFrom24BitRGB(43, 117, 212));
-    hum_n.setLinespacing(0);
-    Unicode::snprintf(hum_nBuffer, HUM_N_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID15).getText());
-    hum_n.setWildcard(hum_nBuffer);
-    hum_n.setTypedText(touchgfx::TypedText(T_SINGLEUSEID14));
-    climate.add(hum_n);
-
-    temp_prg.setXY(263, 100);
-    temp_prg.setProgressIndicatorPosition(0, 0, 53, 27);
-    temp_prg.setRange(0, 100, 100, 1);
-    temp_prg.setCenter(26, 26);
-    temp_prg.setRadius(25);
-    temp_prg.setLineWidth(0);
-    temp_prg.setStartEndAngle(-95, 85);
-    temp_prg.setBackground(touchgfx::Bitmap(BITMAP_PRG_CIRCLE_ID));
-    temp_prgPainter.setColor(touchgfx::Color::getColorFrom24BitRGB(219, 19, 19));
-    temp_prg.setPainter(temp_prgPainter);
-    temp_prg.setValue(25);
-    climate.add(temp_prg);
-
-    hum_prg.setXY(263, 199);
-    hum_prg.setProgressIndicatorPosition(0, 0, 53, 27);
-    hum_prg.setRange(0, 100, 100, 1);
-    hum_prg.setCenter(26, 26);
-    hum_prg.setRadius(25);
-    hum_prg.setLineWidth(0);
-    hum_prg.setStartEndAngle(-95, 85);
-    hum_prg.setBackground(touchgfx::Bitmap(BITMAP_PRG_CIRCLE_ID));
-    hum_prgPainter.setColor(touchgfx::Color::getColorFrom24BitRGB(43, 117, 212));
-    hum_prg.setPainter(hum_prgPainter);
-    hum_prg.setValue(20);
-    climate.add(hum_prg);
-
     add(bkg);
-    add(btn_main);
-    add(clock);
-    add(quote);
     add(start);
-    add(climate);
 }
 
 void mainViewBase::setupScreen()
@@ -255,104 +44,15 @@ void mainViewBase::setupScreen()
 
 }
 
-void mainViewBase::clock_inEndedCallbackHandler(const touchgfx::MoveAnimator<touchgfx::Container>& comp)
+//Handles when a key is pressed
+void mainViewBase::handleKeyEvent(uint8_t key)
 {
-    //start_out
-    //When clock_in completed move start
-    //Move start to x:0, y:320 with CubicOut easing in 50 ms (3 Ticks)
-    start.clearMoveAnimationEndedAction();
-    start.startMoveAnimation(0, 320, 3, touchgfx::EasingEquations::cubicEaseOut, touchgfx::EasingEquations::cubicEaseOut);
-}
-
-void mainViewBase::clock_set_moveOutEndedCallbackHandler(const touchgfx::MoveAnimator<touchgfx::Container>& comp)
-{
-    //quote_in
-    //When clock_set_moveOut completed move quote
-    //Move quote to x:263, y:45 with CubicOut easing in 50 ms (3 Ticks)
-    quote.clearMoveAnimationEndedAction();
-    quote.startMoveAnimation(263, 45, 3, touchgfx::EasingEquations::cubicEaseOut, touchgfx::EasingEquations::cubicEaseOut);
-}
-
-void mainViewBase::clock_outEndedCallbackHandler(const touchgfx::MoveAnimator<touchgfx::Container>& comp)
-{
-    //quote_out
-    //When clock_out completed move quote
-    //Move quote to x:0, y:-520 with CubicOut easing in 50 ms (3 Ticks)
-    quote.clearMoveAnimationEndedAction();
-    quote.startMoveAnimation(0, -520, 3, touchgfx::EasingEquations::cubicEaseOut, touchgfx::EasingEquations::cubicEaseOut);
-    quote.setMoveAnimationEndedAction(quote_outEndedCallback);
-}
-
-void mainViewBase::quote_outEndedCallbackHandler(const touchgfx::MoveAnimator<touchgfx::Container>& comp)
-{
-    //cimate_in
-    //When quote_out completed move climate
-    //Move climate to x:0, y:0 with CubicOut easing in 50 ms (3 Ticks)
-    climate.clearMoveAnimationEndedAction();
-    climate.startMoveAnimation(0, 0, 3, touchgfx::EasingEquations::cubicEaseOut, touchgfx::EasingEquations::cubicEaseOut);
-}
-
-void mainViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
-{
-    if (&src == &btn_main)
+    if(28 == key)
     {
-        //clock_in
-        //When btn_main clicked move clock
-        //Move clock to x:0, y:0 with CubicOut easing in 50 ms (3 Ticks)
-        clock.clearMoveAnimationEndedAction();
-        clock.startMoveAnimation(0, 0, 3, touchgfx::EasingEquations::cubicEaseOut, touchgfx::EasingEquations::cubicEaseOut);
-        clock.setMoveAnimationEndedAction(clock_inEndedCallback);
-    }
-    else if (&src == &btn_clock)
-    {
-        //clock_out
-        //When btn_clock clicked move clock
-        //Move clock to x:0, y:-320 with CubicOut easing in 50 ms (3 Ticks)
-        clock.clearMoveAnimationEndedAction();
-        clock.startMoveAnimation(0, -320, 3, touchgfx::EasingEquations::cubicEaseOut, touchgfx::EasingEquations::cubicEaseOut);
-        clock.setMoveAnimationEndedAction(clock_outEndedCallback);
-    }
-    else if (&src == &setup)
-    {
-        //setup_Interaction
-        //When setup clicked call virtual function
-        //Call setupClicked
-        setupClicked();
-
-        //clock_set_moveOut
-        //When setup_Interaction completed move clock_set
-        //Move clock_set to x:480, y:45 with LinearIn easing in 50 ms (3 Ticks)
-        clock_set.clearMoveAnimationEndedAction();
-        clock_set.startMoveAnimation(480, 45, 3, touchgfx::EasingEquations::linearEaseIn, touchgfx::EasingEquations::linearEaseIn);
-        clock_set.setMoveAnimationEndedAction(clock_set_moveOutEndedCallback);
-    }
-    else if (&src == &hplus)
-    {
-        //hplus_Interaction
-        //When hplus clicked call virtual function
-        //Call hplusClicked
-        hplusClicked();
-    }
-    else if (&src == &hminus)
-    {
-        //hminus_Interaction
-        //When hminus clicked call virtual function
-        //Call hminusClicked
-        hminusClicked();
-    }
-    else if (&src == &mplus)
-    {
-        //mplus_Interaction
-        //When mplus clicked call virtual function
-        //Call mplusClicked
-        mplusClicked();
-    }
-    else if (&src == &mminus)
-    {
-        //mminus_Interaction
-        //When mminus clicked call virtual function
-        //Call mminusClicked
-        mminusClicked();
+        //Main_to_clock
+        //When hardware button 28 clicked change screen to Clock_screen
+        //Go to Clock_screen with screen transition towards North
+        application().gotoClock_screenScreenSlideTransitionNorth();
     }
 }
 

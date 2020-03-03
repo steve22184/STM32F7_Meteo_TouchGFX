@@ -8,11 +8,19 @@
 #include <common/Partition.hpp>
 #include <mvp/MVPHeap.hpp>
 #include <touchgfx/transitions/NoTransition.hpp>
+#include <touchgfx/transitions/SlideTransition.hpp>
+#include <touchgfx/transitions/SlideTransition.hpp>
+#include <touchgfx/transitions/SlideTransition.hpp>
+
 #include <gui/common/FrontendApplication.hpp>
 #include <gui/model/Model.hpp>
 
 #include <gui/main_screen/mainView.hpp>
 #include <gui/main_screen/mainPresenter.hpp>
+#include <gui/clock_screen_screen/Clock_screenView.hpp>
+#include <gui/clock_screen_screen/Clock_screenPresenter.hpp>
+#include <gui/climate_screen_screen/Climate_screenView.hpp>
+#include <gui/climate_screen_screen/Climate_screenPresenter.hpp>
 
 
 /**
@@ -36,7 +44,9 @@ public:
      * @note All view types used in the application MUST be added to this list!
      */
     typedef touchgfx::meta::TypeList< mainView,
-            touchgfx::meta::Nil
+            touchgfx::meta::TypeList< Clock_screenView,
+            touchgfx::meta::TypeList< Climate_screenView,
+            touchgfx::meta::Nil > >
             > GeneratedViewTypes;
 
     /**
@@ -49,7 +59,9 @@ public:
      * @note All presenter types used in the application MUST be added to this list!
      */
     typedef touchgfx::meta::TypeList< mainPresenter,
-            touchgfx::meta::Nil
+            touchgfx::meta::TypeList< Clock_screenPresenter,
+            touchgfx::meta::TypeList< Climate_screenPresenter,
+            touchgfx::meta::Nil > >
             > GeneratedPresenterTypes;
 
     /**
@@ -62,7 +74,8 @@ public:
      * @note All transition types used in the application MUST be added to this list!
      */
     typedef touchgfx::meta::TypeList< touchgfx::NoTransition,
-            touchgfx::meta::Nil
+            touchgfx::meta::TypeList< SlideTransition<NORTH>,
+            touchgfx::meta::Nil >
             > GeneratedTransitionTypes;
 
     /**

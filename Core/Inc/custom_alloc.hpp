@@ -153,6 +153,7 @@ bool operator!=(const CustomAllocator<T>& lhs, const CustomAllocator<U>& rhs) {
 typedef CustomAllocator<uint8_t> alloc_type8;
 typedef CustomAllocator<uint16_t> alloc_type16;
 typedef CustomAllocator<uint32_t> alloc_type32;
+typedef CustomAllocator<char> alloc_type_char;
 /*----------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------*/

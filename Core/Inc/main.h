@@ -29,6 +29,7 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f7xx_hal.h"
+#include "stm32f7xx_hal.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -71,11 +72,8 @@ void Error_Handler(void);
 #define TIM3_CH1_IR_GPIO_Port GPIOA
 #define Green_Pin GPIO_PIN_0
 #define Green_GPIO_Port GPIOB
-#define IR_Pin GPIO_PIN_0
-#define IR_GPIO_Port GPIOG
-#define IR_EXTI_IRQn EXTI0_IRQn
-#define DHT11_Pin GPIO_PIN_1
-#define DHT11_GPIO_Port GPIOG
+#define TIM1_CH1_DHT11_Pin GPIO_PIN_9
+#define TIM1_CH1_DHT11_GPIO_Port GPIOE
 #define Red_Pin GPIO_PIN_14
 #define Red_GPIO_Port GPIOB
 #define TS_CS_Pin GPIO_PIN_2
@@ -89,7 +87,7 @@ void Error_Handler(void);
 #define Blue_Pin GPIO_PIN_7
 #define Blue_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
-#define EEPROM_DRIVER	UINT16_C(0xA0)
+
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

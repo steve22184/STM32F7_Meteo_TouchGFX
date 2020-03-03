@@ -203,7 +203,7 @@ void XPT2046<Communicate>::init (void){
 }
 template<class Communicate>
 uint32_t XPT2046<Communicate>::conversion (uint8_t command){
-	Communicate::template set_prescaler<>(SPI_BAUDRATEPRESCALER_64); // 1.6 Mbit/sec
+	Communicate::template mode<>(SPI_BAUDRATEPRESCALER_64); // 1.6 Mbit/sec
 	TouchSelect ts;
 	Communicate::template send8b<>(command);
 

@@ -11,6 +11,10 @@
 #include <platform/driver/lcd/LCD16bpp.hpp>
 #include <gui/main_screen/mainView.hpp>
 #include <gui/main_screen/mainPresenter.hpp>
+#include <gui/clock_screen_screen/Clock_screenView.hpp>
+#include <gui/clock_screen_screen/Clock_screenPresenter.hpp>
+#include <gui/climate_screen_screen/Climate_screenView.hpp>
+#include <gui/climate_screen_screen/Climate_screenPresenter.hpp>
 
 using namespace touchgfx;
 
@@ -40,4 +44,41 @@ void FrontendApplicationBase::gotomainScreenNoTransition()
 void FrontendApplicationBase::gotomainScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<mainView, mainPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+void FrontendApplicationBase::gotomainScreenSlideTransitionNorth()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotomainScreenSlideTransitionNorthImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotomainScreenSlideTransitionNorthImpl()
+{
+    touchgfx::makeTransition<mainView, mainPresenter, touchgfx::SlideTransition<NORTH>, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Clock_screen
+
+void FrontendApplicationBase::gotoClock_screenScreenSlideTransitionNorth()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoClock_screenScreenSlideTransitionNorthImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoClock_screenScreenSlideTransitionNorthImpl()
+{
+    touchgfx::makeTransition<Clock_screenView, Clock_screenPresenter, touchgfx::SlideTransition<NORTH>, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Climate_screen
+
+void FrontendApplicationBase::gotoClimate_screenScreenSlideTransitionNorth()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoClimate_screenScreenSlideTransitionNorthImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoClimate_screenScreenSlideTransitionNorthImpl()
+{
+    touchgfx::makeTransition<Climate_screenView, Climate_screenPresenter, touchgfx::SlideTransition<NORTH>, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

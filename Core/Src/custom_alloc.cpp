@@ -44,6 +44,7 @@ const uint32_t MEM_POOL_SIZE = 5120;
 uint8_t mem_pool[MEM_POOL_SIZE];
 
 AppAllocator al(reinterpret_cast<void*>(mem_pool), MEM_POOL_SIZE);
+//AppAllocator al;
 /*******************************************************************************
 *  Enums
 *******************************************************************************/

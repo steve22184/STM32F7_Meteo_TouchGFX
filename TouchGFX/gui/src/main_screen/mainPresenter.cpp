@@ -9,8 +9,8 @@ mainPresenter::mainPresenter(mainView& v)
 
 void mainPresenter::activate()
 {
-	 // ensure the timeliness of the animations
-	    HAL::getInstance()->setFrameRateCompensation(true);
+	// ensure the timeliness of the animations
+	HAL::getInstance()->setFrameRateCompensation(true);
 }
 
 void mainPresenter::deactivate()

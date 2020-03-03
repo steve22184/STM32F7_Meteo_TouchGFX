@@ -23,7 +23,6 @@
 #include "cmsis_os.h"
 #include "crc.h"
 #include "dma.h"
-#include "eth.h"
 #include "i2c.h"
 #include "rng.h"
 #include "rtc.h"
@@ -62,8 +61,8 @@ volatile unsigned long ulHighFrequencyTimerTicks;
 void SystemClock_Config(void);
 void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
-
 void TGFX_Timing (void);
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -86,6 +85,7 @@ int main(void)
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
+
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
@@ -103,10 +103,11 @@ int main(void)
   MX_CRC_Init();
   MX_I2C2_Init();
   MX_TIM10_Init();
-  MX_ETH_Init();
   MX_RNG_Init();
   MX_RTC_Init();
   MX_SPI5_Init();
+  MX_TIM1_Init();
+  MX_TIM2_Init();
   MX_TIM3_Init();
   MX_USART2_UART_Init();
   MX_TouchGFX_Init();

@@ -138,8 +138,8 @@ void OSWrappers::taskDelay(uint16_t ms)
     vTaskDelay(ms);
 }
 
-void TGFX_Timing (void){
-	OSWrappers::waitForVSync();
-}
 
+void TGFX_Timing (void){
+	OSWrappers::signalVSync();
+}
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

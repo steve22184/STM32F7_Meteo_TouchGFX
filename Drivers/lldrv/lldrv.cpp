@@ -32,15 +32,13 @@
 *******************************************************************************/
 #include "lldrv.hpp"
 
-SPI_HandleTypeDef hspi5;
-I2C_HandleTypeDef hi2c2;
-
 namespace app {
 /*******************************************************************************
 *  Defines
 *******************************************************************************/
 #define HSPI			hspi5
 #define IICx			hi2c2
+#define UARTx			huart2
 
 #define SET_DATASIZE(datasize)					\
 	do {										\
@@ -55,7 +53,17 @@ namespace app {
 /*******************************************************************************
 *  Constants and variables
 *******************************************************************************/
+}
 
+SPI_HandleTypeDef hspi5;
+I2C_HandleTypeDef hi2c2;
+UART_HandleTypeDef huart2;
+
+namespace app{
+
+constexpr uint32_t UART_WAIT = UINT32_C(3000);
+constexpr uint16_t i2c_start_address = UINT16_C(0x40);
+constexpr uint16_t EEPROM_DRIVER = UINT16_C(0xA0);
 /*******************************************************************************
 *  Enums
 *******************************************************************************/
@@ -71,7 +79,7 @@ namespace app {
 /*******************************************************************************
 *  Class methods
 *******************************************************************************/
-void Spi::set_prescaler (uint32_t prescaler){
+void Spi::mode (uint32_t prescaler){
 	if (HSPI.Init.BaudRatePrescaler != prescaler){
 		HAL_SPI_DeInit(&HSPI);
 		HSPI.Init.BaudRatePrescaler = prescaler;
@@ -112,24 +120,53 @@ void Spi::receive16b (uint16_t* data, uint16_t size){
 }
 
 /*----------------------------------------------------------------------------*/
-void IIC::send8b (uint8_t* data, uint16_t size){
-	HAL_I2C_Mem_Write_DMA(&IICx, EEPROM_DRIVER, 0x000F,
+void IIC::send8b (uint8_t* data, uint16_t size, uint16_t address){
+	HAL_I2C_Mem_Write_DMA(&IICx, EEPROM_DRIVER, address,
 					 I2C_MEMADD_SIZE_16BIT, data, size);
 }
-void IIC::receive8b (uint8_t* data, uint16_t size){
-	HAL_I2C_Mem_Read_DMA(&IICx, EEPROM_DRIVER, 0x000F,
+void IIC::receive8b (uint8_t* data, uint16_t size, uint16_t address){
+	HAL_I2C_Mem_Read_DMA(&IICx, EEPROM_DRIVER, address,
 				 I2C_MEMADD_SIZE_16BIT, data, size);
 }
 
 /*----------------------------------------------------------------------------*/
+void Uart::mode (uint32_t baud){
+	HAL_UART_DeInit(&UARTx);
+	UARTx.Init.BaudRate = baud;
+	HAL_UART_Init(&UARTx);
+}
 
+void Uart::send_receive8b (uint8_t* tdata, uint8_t* rdata, uint16_t size){
+	uint8_t *tx = tdata;
+	uint8_t *rx = rdata;
+
+	SET_BIT(UARTx.Instance->CR1, USART_CR1_UE);
+
+	while (size--) {
+		UARTx.Instance->TDR = *tx++;
+		while (READ_BIT(UARTx.Instance->ISR, USART_ISR_TXE) != USART_ISR_TXE ){__NOP();}
+		while (READ_BIT(UARTx.Instance->ISR, USART_ISR_RXNE) != USART_ISR_RXNE){__NOP();}
+		*rx++ = UARTx.Instance->RDR;
+	}
+	while ( READ_BIT(UARTx.Instance->ISR, USART_ISR_TC) != USART_ISR_TC ){__NOP();}
+
+	CLEAR_BIT(UARTx.Instance->CR1, USART_CR1_UE);
+}
 /*******************************************************************************
 *  Local functions definitions
 *******************************************************************************/
-
+extern "C" void eeprom_write (uint8_t* buf, uint16_t size, uint16_t address);
+extern "C" void eeprom_read (uint8_t* buf, uint16_t size, uint16_t address);
 /*******************************************************************************
 *  Public functions definitions
 *******************************************************************************/
+
+void eeprom_write (uint8_t* buf, uint16_t size, uint16_t address){
+	Communicate<IIC>::template send8b<>(buf, size, address);
+}
+void eeprom_read (uint8_t* buf, uint16_t size, uint16_t address){
+	Communicate<IIC>::template receive8b<>(buf, size, address);
+}
 
 } // End of app namespace
 

@@ -106,7 +106,7 @@ void TouchGFXGeneratedHAL::flushFrameBuffer(const touchgfx::Rect& rect)
 
 // Used by Partial Framebuffer strategy to indicate that a new block is ready for transfer.
 //static volatile bool readyForTransfer = false;
-//
+
 //namespace touchgfx
 //{
 ///**

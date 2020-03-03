@@ -5,7 +5,6 @@
 #include <gui/main_screen/mainPresenter.hpp>
 #include <touchgfx/widgets/TextureMapper.hpp>
 
-
 class mainView : public mainViewBase
 {
 public:
@@ -16,11 +15,6 @@ public:
 
     virtual void handleTickEvent();
 
-    virtual void hplusClicked();
-    virtual void hminusClicked();
-    virtual void mplusClicked();
-    virtual void mminusClicked();
-    virtual void setupClicked();
 protected:
 
 private:
@@ -29,17 +23,9 @@ private:
     float yAngleTGFX;
     float zAngleTGFX;
 
-    float yAngleT;
-    float yAngleH;
-
     float deltaXangleTGFX;
     float deltaYangleTGFX;
     float deltaZangleTGFX;
-
-    float deltaYangleT;
-    float deltaYangleH;
-
-    uint8_t hour, minute, second;
 };
 
 #endif // MAINVIEW_HPP

@@ -22,8 +22,8 @@ struct TypographyFontIndex
     static const touchgfx::FontId LARGE = 1;          // verdana_40_4bpp
     static const touchgfx::FontId SMALL = 2;          // verdana_10_4bpp
     static const touchgfx::FontId TYPOGRAPHY_APP = 3; // segoesc_30_4bpp
-    static const touchgfx::FontId TYPOGRAPHY_QH = 4;  // ITCBLKAD_TTF_25_4bpp
-    static const touchgfx::FontId TYPOGRAPHY_Q = 5;   // ITCBLKAD_TTF_16_4bpp
+    static const touchgfx::FontId TYPOGRAPHY_QH = 4;  // SCHLBKI_TTF_24_4bpp
+    static const touchgfx::FontId TYPOGRAPHY_Q = 5;   // SCHLBKI_TTF_16_4bpp
     static const uint16_t NUMBER_OF_FONTS = 6;
 };
 
