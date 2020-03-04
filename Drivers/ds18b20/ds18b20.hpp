@@ -1,5 +1,5 @@
 /*
- * ds18b20.h
+ * ds18b20.hpp
  *
  *  Created on: 10 фев. 2020 г.
  *      Author: ALScode

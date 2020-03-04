@@ -1,5 +1,5 @@
 /*
- * ili9486.c
+ * ili9486.cpp
  *
  *  Created on: 10 фев. 2019 г.
  *      Author: ALScode

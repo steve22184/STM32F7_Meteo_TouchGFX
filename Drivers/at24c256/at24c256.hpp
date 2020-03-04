@@ -67,7 +67,7 @@ typedef enum : uint16_t{
 /*******************************************************************************
 *  Public functions declarations
 *******************************************************************************/
-extern "C" void i2c2_ev_isr(void) __attribute__((interrupt));
+extern "C" void i2c2_ev_isr(void);
 
 /*******************************************************************************
 *  Struct / Classes
@@ -87,7 +87,7 @@ public:
 	uint8_t* get_data(void);
 	uint8_t get_flag (void);
 	friend
-	void i2c2_ev_isr(void) __attribute__((interrupt));
+	void i2c2_ev_isr(void);
 
 private:
 	cluster buf;

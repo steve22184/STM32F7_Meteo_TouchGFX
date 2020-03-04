@@ -25,7 +25,7 @@
 
 #include <sys/types.h>
 
-extern size_t init_memory_pool(size_t, void *);
+extern  size_t init_memory_pool(size_t, void *);
 extern size_t get_used_size(void *);
 extern size_t get_max_size(void *);
 extern void destroy_memory_pool(void *);

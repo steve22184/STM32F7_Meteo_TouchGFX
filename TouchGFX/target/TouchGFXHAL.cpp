@@ -20,7 +20,6 @@
 
 #include "stm32f7xx.h"
 #include "key_sampler.hpp"
-//#include "st7735.hpp"
 #include "ili9486.hpp"
 #include "xpt2046.hpp"
 
@@ -61,10 +60,8 @@ void TouchGFXHAL::initialize()
     TouchGFXGeneratedHAL::lockDMAToFrontPorch(false);
 
     TouchGFXGeneratedHAL::setButtonController(&btnCtrl);
-//    HAL::getButtonController()->init();
     HAL::setTouchSampleRate(30);
 
-//    app::ST7735<app::Spi>::init();
     app::ILI9486<app::spi>::init(1);
     calibration();
 }
@@ -117,11 +114,6 @@ void TouchGFXHAL::flushFrameBuffer(const touchgfx::Rect& rect)
 
     TouchGFXGeneratedHAL::flushFrameBuffer(rect);
 
-//    using namespace app;
-//    ST7735<Spi>::set_frame(rect.x, rect.y, rect.width, rect.height);
-//    ST7735<Spi>::flush_from_buffer(TouchGFXGeneratedHAL::buffer0,
-//    								static_cast<uint16_t>(rect.width * rect.height));
-
     frameBufferAllocator->markBlockReadyForTransfer();
         if (!isTransmittingData())
         {
@@ -131,8 +123,6 @@ void TouchGFXHAL::flushFrameBuffer(const touchgfx::Rect& rect)
         }
 
         touchgfx::startNewTransfer();
-
-
 
     // If the framebuffer is placed in Write Through cached memory (e.g. SRAM) then we need
     // to flush the Dcache to make sure framebuffer is correct in RAM. That's done
@@ -265,8 +255,6 @@ void calibration (void){
 	using namespace app;
 	uint16_t LEFT_TOP_1 = 0, RIGHT_TOP_2 = 1, RIGHT_DOWN_3 = 2, LEFT_DOWN_4 = 3;
 	uint32_t MeasureFlags = 0;
-
-//	ALLOCATOR(AppAllocator, uint32_t, al);
 
 	CustomAllocator<uint32_t>ca( allocator() );
 	std::vector<uint32_t, alloc_type32>pointX(4, ca);

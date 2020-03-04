@@ -150,18 +150,10 @@ void Uart::send_receive8b (uint8_t* tdata, uint8_t* rdata, uint16_t size){
 /*******************************************************************************
 *  Local functions definitions
 *******************************************************************************/
-extern "C" void eeprom_write (uint8_t* buf, uint16_t size, uint16_t address);
-extern "C" void eeprom_read (uint8_t* buf, uint16_t size, uint16_t address);
+
 /*******************************************************************************
 *  Public functions definitions
 *******************************************************************************/
-
-void eeprom_write (uint8_t* buf, uint16_t size, uint16_t address){
-	Communicate<IIC>::template send8b<>(buf, size, address);
-}
-void eeprom_read (uint8_t* buf, uint16_t size, uint16_t address){
-	Communicate<IIC>::template receive8b<>(buf, size, address);
-}
 
 } // End of app namespace
 

@@ -1,5 +1,5 @@
 /*
- * dht11.c
+ * dht11.cpp
  *
  *  Created on: 10 фев. 2019 г.
  *      Author: ALScode

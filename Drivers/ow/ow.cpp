@@ -1,5 +1,5 @@
 /*
- * ow.c
+ * ow.cpp
  *
  *  Created on: 10 фев. 2019 г.
  *      Author: ALScode

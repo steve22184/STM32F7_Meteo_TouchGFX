@@ -1,5 +1,5 @@
 /*
- * ili9486.h
+ * ili9486.hpp
  *
  *  Created on: 10 фев. 2020 г.
  *      Author: ALScode
@@ -37,7 +37,7 @@
 #include <array>
 #include <vector>
 #include "lldrv.hpp"
-#include <custom_alloc.hpp>
+#include "custom_alloc.hpp"
 
 /*******************************************************************************
 *  Defines
@@ -50,44 +50,44 @@
 /*******************************************************************************
 *  Enums
 *******************************************************************************/
-typedef enum{
+typedef enum : uint32_t {
 	ILI9486_LCD_PIXEL_WIDTH = 480,
 	ILI9486_LCD_PIXEL_HEIGHT = 320,
 	ILI9486_LCD_PIXEL_NUMBER = (ILI9486_LCD_PIXEL_WIDTH *
 			ILI9486_LCD_PIXEL_HEIGHT),
 } Display_Size;
 
-typedef enum {
-	WHITE      =   UINT16_C(0xFFFF),
-	BLACK      =   UINT16_C(0x0000),
-	BLUE       =   UINT16_C(0x001F),
-	RED        =   UINT16_C(0xF800),
-	MAGENTA    =   UINT16_C(0xF81F),
-	GREEN      =   UINT16_C(0x07E0),
-	CYAN       =   UINT16_C(0x7FFF),
-	YELLOW     =   UINT16_C(0xFFE0),
-	BROWN	    =	UINT16_C(0xBC40),
-	BRRED	    =	UINT16_C(0xFC07),			// brownish red
-	GRAY 	    =	UINT16_C(0x8430), 		// gray
-	DARKBLUE   = 	UINT16_C(0x01CF), 		// dark blue
-	LIGHTBLUE  = 	UINT16_C(0x7D7C), 		// blue
-	GRAYBLUE 	=	UINT16_C(0x5458), 	    // gray-blue
-	LIGHTGREEN =	UINT16_C(0x841F), 		// light green
-	LIGHTGRAY 	=	UINT16_C(0xC618), 	    // light gray
+typedef enum : uint16_t {
+	WHITE      =   0xFFFF,
+	BLACK      =   0x0000,
+	BLUE       =   0x001F,
+	RED        =   0xF800,
+	MAGENTA    =   0xF81F,
+	GREEN      =   0x07E0,
+	CYAN       =   0x7FFF,
+	YELLOW     =   0xFFE0,
+	BROWN	   =   0xBC40,
+	BRRED	   =   0xFC07,		// brownish red
+	GRAY 	   =   0x8430, 		// gray
+	DARKBLUE   =   0x01CF, 		// dark blue
+	LIGHTBLUE  =   0x7D7C, 		// blue
+	GRAYBLUE   =   0x5458, 	    // gray-blue
+	LIGHTGREEN =   0x841F, 		// light green
+	LIGHTGRAY  =   0xC618, 	    // light gray
 }BasicColors;
 
-typedef enum{
-	ILI9486_CASET = UINT8_C(0x2A),
-	ILI9486_PASET = UINT8_C(0x2B),
-	ILI9486_RAMWR = UINT8_C(0x2C),
-	ILI9486_RAMRD = UINT8_C(0x2E),
-	ILI9486_MADCTL = UINT8_C(0x36),
-	MADCTL_MY = UINT8_C(0x80),
-	MADCTL_MX = UINT8_C(0x40),
-	MADCTL_MV = UINT8_C(0x20),
-	MADCTL_ML = UINT8_C(0x10),
-	MADCTL_BGR = UINT8_C(0x08),
-	MADCTL_MH = UINT8_C(0x04),
+typedef enum : uint8_t {
+	ILI9486_CASET 	= 0x2A,
+	ILI9486_PASET 	= 0x2B,
+	ILI9486_RAMWR 	= 0x2C,
+	ILI9486_RAMRD 	= 0x2E,
+	ILI9486_MADCTL	= 0x36,
+	MADCTL_MY 		= 0x80,
+	MADCTL_MX 		= 0x40,
+	MADCTL_MV 		= 0x20,
+	MADCTL_ML 		= 0x10,
+	MADCTL_BGR		= 0x08,
+	MADCTL_MH 		= 0x04,
 }ILI9486_Commands;
 
 
@@ -174,10 +174,9 @@ void ILI9486<Communicate>::draw_rectangle (uint16_t x, uint16_t y,
 
 	set_frame(x, y, w, h);
 
-//	ALLOCATOR(AppAllocator, uint16_t, al);
 	CustomAllocator<uint16_t>ca( allocator() );
-
 	std::vector<uint16_t, alloc_type16>buf(w, ca);
+
 	std::fill(buf.begin(), buf.end(), color);
 
 	WriteData wd;
